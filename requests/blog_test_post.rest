@@ -1,10 +1,9 @@
 POST http://localhost:3001/api/blogs
 Content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbmNoZXpAZ21haWwuY29tIiwiaWQiOjMsImlhdCI6MTY4Mzc2NjgyOX0.pXtteK3fg_G--CyR5EPIeecsLY8xWi5esnH9fSScGzQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbmNoZXpAZ21haWwuY29tIiwiaWQiOjMsImlhdCI6MTY4Mzg2NzczM30.fhw2yNoapUxBZCWSy7LZ0lErk9GMq28OXKT-i7BeoVg
 
 {
-  "author": "rick",
-  "title": "rick is the best",
-  "url": "http://rick.com",
-  "likes": 2
+  "author": "morty",
+  "title": "the mort 2",
+  "url": "http://mortysmith.com"
 }
