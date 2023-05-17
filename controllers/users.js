@@ -1,5 +1,6 @@
 const router = require("express").Router()
 require("express-async-errors")
+const { Op } = require("sequelize")
 
 const { User, Blog } = require("../models")
 
@@ -28,6 +29,35 @@ router.put("/:username", userFinder, async (req, res) => {
     req.user.username = req.body.username
     await req.user.save()
     res.json(req.user)
+  } else {
+    res.status(404).end()
+  }
+})
+
+router.get("/:id", async (req, res) => {
+  const where = {}
+
+  if (req.query.read) {
+    where.read = {
+      [Op.is]: req.query.read === "true",
+    }
+  }
+
+  const user = await User.findByPk(req.params.id, {
+    include: [
+      {
+        model: Blog,
+        as: "readings",
+        attributes: { exclude: ["userId", "createdAt", "updatedAt"] },
+        through: {
+          attributes: ["id", "read"],
+          where,
+        },
+      },
+    ],
+  })
+  if (user) {
+    res.json(user)
   } else {
     res.status(404).end()
   }

@@ -1,10 +1,7 @@
-POST http://localhost:3001/api/blogs
+PUT http://localhost:3001/api/readinglists/3
 Content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbmNoZXpAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTY4NDI3NTc5Nn0.eUmuRfC2epis4okXt3ojdWZlzqY_d6g-yk2VjWGaLQs
 
 {
-  "author": "rick",
-  "title": "wubba lubba",
-  "url": "http://rickprime.com",
-  "year": 2012
+  "read": true
 }
