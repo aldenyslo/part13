@@ -2,9 +2,11 @@ const jwt = require("jsonwebtoken")
 const router = require("express").Router()
 
 const { SECRET } = require("../utils/config")
-const User = require("../models/user")
+const { User, ActiveSession } = require("../models")
 
-router.post("/", async (req, res) => {
+const { tokenExtractor } = require("../utils/middleware")
+
+router.post("/login", async (req, res) => {
   const body = req.body
 
   const user = await User.findOne({ where: { username: body.username } })
@@ -24,7 +26,16 @@ router.post("/", async (req, res) => {
 
   const token = jwt.sign(userForToken, SECRET)
 
+  await ActiveSession.create({ userId: user.id, token })
+
   res.status(200).send({ token, username: user.username, name: user.name })
+})
+
+router.delete("/logout", tokenExtractor, async (req, res) => {
+  console.log(req.user)
+  await ActiveSession.destroy({ where: { userId: req.user.id } })
+
+  res.status(200).send({ message: "token revoked" })
 })
 
 module.exports = router

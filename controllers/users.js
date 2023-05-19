@@ -2,7 +2,7 @@ const router = require("express").Router()
 require("express-async-errors")
 const { Op } = require("sequelize")
 
-const { User, Blog } = require("../models")
+const { User, Blog, ReadingList } = require("../models")
 
 router.get("/", async (req, res) => {
   const users = await User.findAll({
@@ -38,8 +38,10 @@ router.get("/:id", async (req, res) => {
   const where = {}
 
   if (req.query.read) {
-    where.read = {
-      [Op.is]: req.query.read === "true",
+    if (req.query.read === "true" || req.query.read === "false") {
+      where.read = {
+        [Op.is]: req.query.read === "true",
+      }
     }
   }
 

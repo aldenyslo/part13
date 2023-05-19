@@ -1,10 +1,10 @@
 POST http://localhost:3001/api/blogs
 Content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbmNoZXpAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTY4NDI3NTc5Nn0.eUmuRfC2epis4okXt3ojdWZlzqY_d6g-yk2VjWGaLQs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbmNoZXpAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTY4NDQ1NzE5Nn0.Wa7KB8AkCfgzcpYe-rGc6FEHytXKjMFO2ru9_vFJHuw
 
 {
   "author": "rick",
-  "title": "wubba lubba",
+  "title": "wubba lubba 2.0",
   "url": "http://rickprime.com",
-  "year": 2012
+  "year": 2000
 }
